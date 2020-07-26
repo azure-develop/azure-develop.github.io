@@ -1,11 +1,93 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
     <head>
-
+        <title>My low level resume</title>
+        <meta charset="UTF-8">
+        <meta name="author" content="Hennry Cai">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            #container{
+                height: 100%;
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 70px 1fr 1fr 1fr 1fr 1fr;
+            }
+            #navigation{
+                grid-row: 1/2;
+                grid-column: 1/3;
+                position: fixed;
+                display: flex;
+                width: 100%;
+                justify-content: space-around;
+                align-items: center;
+                height: 50px;
+            }
+            #navigation span{
+                text-align: center;
+                transition: all 2s ease-out 0s;
+            }
+            #navigation span:hover{
+                border-bottom: 3px solid lightblue;
+            }
+            #education{
+                grid-row: 2/3;
+                grid-column: 1/3;
+            }
+            #org{
+                grid-row: 3/4;
+                grid-column: 1/3;
+            }
+            #prevwork{
+                grid-row: 4/5;
+                grid-column: 1/3;
+            }
+            #intro{
+                grid-row: 5/6;
+                grid-column: 1/3;
+            }
+            #contact{
+                grid-row: 6/7;
+                grid-column: 1/3;
+            }
+        </style>
     </head>
 
     <body>
-        
+        <div id="container">
+            <nav id="navigation">
+                <span>Education History</span>
+                <span>Organizations</span>
+                <span>Previous Works</span>
+                <span>Introduction</span>
+                <span>Contact Details</span>
+            </nav>
+
+            <div id="education">
+                <h3>Pre-school</h3>
+                <h3>Elementary</h3>
+                <h3>Junior Highschool</h3>
+                <h3>Senior Highschool</h3>
+                <h3>College</h3>
+            </div>
+
+            <div id="org">
+                dw
+            </div>
+
+            <div id="prevwork">
+                re
+            </div>
+
+            <div id="intro">
+                gf
+            </div>
+
+            <div id="contact">
+                wew
+            </div>
+        </div>
+        <script src="resume.js"></script>
     </body>
 </html>
