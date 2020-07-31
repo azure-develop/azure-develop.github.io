@@ -7,49 +7,240 @@
         <meta name="author" content="Hennry Cai">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
-            #container{
-                height: 100%;
-                width: 100%;
+            body {
+                margin: 0;
+            }
+
+            #container {
+                max-height: 100%;
+                max-width: 100%;
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                grid-template-rows: 70px 1fr 1fr 1fr 1fr 1fr;
+                grid-template-rows: 50px 1fr 1fr 1fr .5fr .25fr;
             }
-            #navigation{
+
+            #navigation {
                 grid-row: 1/2;
                 grid-column: 1/3;
                 position: fixed;
                 display: flex;
                 width: 100%;
-                justify-content: space-around;
-                align-items: center;
                 height: 50px;
+
+                font-family: AmericanCaptain;
+                font-size: 2em;
+                word-spacing: 10px;
+                background-color: #33c9df;
             }
-            #navigation span{
-                text-align: center;
-                transition: all 2s ease-out 0s;
+
+            #navigation a {
+                display: flex;
+                flex-grow: 1;
+                align-items: center;
+                justify-content: center;
+                border-bottom: 3px solid #33c9df;
+                transition: all 3s ease 0s;
+                text-decoration: none;
+                color: #ffad42;
             }
-            #navigation span:hover{
-                border-bottom: 3px solid lightblue;
+
+            #navigation a:visited {
+                text-decoration: none;
             }
-            #education{
+
+            #navigation a:hover {
+                text-decoration: none;
+                color: #c08d4a;
+                background-color: #30abbe;
+                border-bottom: 3px solid #ffad42;
+            }
+
+            #education {
                 grid-row: 2/3;
                 grid-column: 1/3;
+                color: white;
+                background-color:#0439A2;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 14pt;
+                text-align: center;
+                padding-top: 10px;
+                padding-bottom: 30px;
             }
-            #org{
+
+            #education p{
+                font-size: 20pt;
+                margin-bottom: 10px;
+                font-weight: 600;
+            }
+
+            #education h1{
+                text-shadow: 1px 1px 3px black, 0px 0px 25px yellow, 0px 0px 5px rgba(255, 255, 0, 0.699);
+            }
+
+            .logo{
+                height: 100px;
+                width: 300px;
+                transition: all 3s ease 0s;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+
+            .logo:hover{
+                transform: scaleX(-1);opacity: 0.5;
+            }
+
+            #org {
                 grid-row: 3/4;
                 grid-column: 1/3;
+                background-color: #155715;
+                color:white;
+                padding-top: 10px;
+                padding-bottom: 30px;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 14pt;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 95px 1fr ;
             }
-            #prevwork{
+
+            #org h1{
+                text-shadow: 1px 1px 3px black, 0px 0px 25px #ffa33f, 0px 0px 5px #dd2222 ;
+                grid-row: 1/2;
+                grid-column: 1/3;
+                text-align: center;
+                margin-top: 25.01px;
+                margin-bottom: 25.01px;
+            }
+
+            #org .orgid1{
+                grid-row: 2/3;
+                grid-column: 1/2;
+                text-align: right;
+                padding-right: 10px;
+                border-right: 3px dashed #d38e0f;
+                font-size: 16px;
+            }
+
+            #org .orgid2{
+                grid-row: 2/3;
+                grid-column: 2/3;
+                padding-left: 10px;
+                border-left: 3px dashed #d38e0f;
+                font-size: 16px;
+                padding-top: 40px;
+            }
+
+            #org .orgname{
+                font-size: 24px;
+                font-weight: 600;
+            }
+
+            #prevwork {
                 grid-row: 4/5;
                 grid-column: 1/3;
+                background-color: #155715;
+                color:white;
+                padding-top: 10px;
+                padding-bottom: 30px;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                border-top:3px dotted yellowgreen;
+
+                display: flex;
+                flex-direction: column;
             }
-            #intro{
+
+            #prevwork h1{
+                text-shadow: 1px 1px 3px black, 0px 0px 25px #ffa33f, 0px 0px 5px #dd2222 ;
+                text-align: center;
+                margin-top: 25.01px;
+                margin-bottom: 25.01px;
+                font-size: 40px;
+            }
+
+            #prevwork span{
+                font-size: 16px;
+                margin-left: 250px;
+                margin-right: 250px;
+                text-align: justify;
+                padding-bottom: 10px;
+            }
+
+            #prevwork span a:link {
+                text-decoration: none;
+                font-size: 30px;
+                color: lightgreen;
+                font-weight: 600;
+            }
+
+            #prevwork span a:visited {
+                text-decoration: none;
+                color: lightgreen;
+            }
+
+            #prevwork span a:hover {
+                text-decoration: none;
+                color: greenyellow;
+            }
+
+            #about {
                 grid-row: 5/6;
                 grid-column: 1/3;
+                color: white;
+                background-color:#0439A2;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 14pt;
+                text-align: center;
+                padding-top: 10px;
+                padding-bottom: 30px;
+
+                display: flex;
+                flex-direction: column;
             }
-            #contact{
+
+            #about h1{
+                text-shadow: 1px 1px 3px black, 0px 0px 25px yellow, 0px 0px 5px rgba(255, 255, 0, 0.699);
+                text-align: center;
+                margin-top: 25.01px;
+                margin-bottom: 25.01px;
+                font-size: 40px;
+            }
+
+            #about span{
+                font-size: 16px;
+                margin-left: 250px;
+                margin-right: 250px;
+                text-align: justify;
+            }
+
+            #contact {
                 grid-row: 6/7;
                 grid-column: 1/3;
+                background-color: #33c9df;
+                color: white;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            }
+
+            #contact h1{
+                text-shadow: 1px 1px 3px black, 0px 0px 25px #ffad42, 0px 0px 5px #c08d4a;
+                font-family: AmericanCaptain;
+                text-align: center;
+                margin-top: 25.01px;
+                margin-bottom: 25.01px;
+                font-size: 40px;
+            }
+
+            #contact span{
+                font-size: 16px;
+                margin-left: 200px;
+                text-align: justify;
+            }
+
+            @font-face {
+                font-family: AmericanCaptain;
+                src: url(AmericanCaptain.otf);
             }
         </style>
     </head>
@@ -57,37 +248,112 @@
     <body>
         <div id="container">
             <nav id="navigation">
-                <span>Education History</span>
-                <span>Organizations</span>
-                <span>Previous Works</span>
-                <span>Introduction</span>
-                <span>Contact Details</span>
+                <a href="#edu">Education History</a>
+                <a href="#orga">Organizations</a>
+                <a href="#work">Previous Works</a>
+                <a href="#ab">About Me</a>
+                <a href="#con">Contact Details</a>
             </nav>
 
             <div id="education">
-                <h3>Pre-school</h3>
-                <h3>Elementary</h3>
-                <h3>Junior Highschool</h3>
-                <h3>Senior Highschool</h3>
-                <h3>College</h3>
+                <h1>
+                    <a name="edu"></a>
+                    Education History
+                </h1>
+                <img class="logo" src="cksc.png" />
             </div>
 
             <div id="org">
-                dw
+                <h1>
+                    <a name="orga"></a>
+                    List of Past and Present Organizations
+                </h1>
             </div>
 
             <div id="prevwork">
-                re
+                <h1>
+                    <a name="work"></a>
+                    Previous Works
+                </h1>
             </div>
 
-            <div id="intro">
-                gf
+            <div id="about">
+                <h1>
+                    <a name="ab"></a>
+                    About Me
+                </h1>
             </div>
 
             <div id="contact">
-                wew
+                <h1>
+                    <a name="con"></a>
+                    Contact Details
+                </h1>
             </div>
         </div>
-        <script src="resume.js"></script>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyCvKKG-eNC4t9QZohuQepdJ6UsaWw0zVCA",
+                authDomain: "ccapdev-resume-b94eb.firebaseapp.com",
+                databaseURL: "https://ccapdev-resume-b94eb.firebaseio.com",
+                projectId: "ccapdev-resume-b94eb",
+                storageBucket: "ccapdev-resume-b94eb.appspot.com",
+                messagingSenderId: "866732324233",
+                appId: "1:866732324233:web:66862e5427db09efa5dd58"
+            };
+            // Initialize Firebase
+            var defaultProject = firebase.initializeApp(firebaseConfig);
+            var db = firebase.firestore();
+            
+            // db.collection("educations").get().then(function(snapshot){
+            //     snapshot.forEach(function(doc){
+            //         console.log(doc.data());
+            //     })
+            // });
+
+            // var newObject={
+            //     name:"thing",
+            //     position:"yay",
+            //     year_start:2012,
+            //     year_end:2014
+            // }
+            // db.collection("organizations").add(newObject).then(function(doc){
+            //     console.log("Item added on ID"+ doc.id)
+            // })
+            //
+            //db.collection("organizations").doc("").delete().then(function(){
+            //     console.log("Item deleted");
+            // }).catch(function(err){
+            //         console.log("error in deleting item"+ err);
+            // });
+
+            // var email = "courtney.ngo@dlsu.edu.ph";
+            // var password = "abcd1234"
+
+            // firebase.auth().signInWithEmailAndPassword(email, password).then(function(user){
+            //     console.log("user signed in");
+
+            //     var user = firebase.auth().currentUser;
+            //     if(user != null){
+            //         console.log(user.email);
+            //     }
+            // }).catch(function(err){
+            //     if(err.code == "auth/wrong-password"){
+            //         alert("wrong password");
+            //     }else{
+            //         alert(err.message);
+            //     }
+            // });
+        </script>
+        <script src="index.js"></script>
     </body>
 </html>
