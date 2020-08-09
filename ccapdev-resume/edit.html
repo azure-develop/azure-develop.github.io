@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>My low level resume</title>
+        <meta charset="UTF-8">
+        <meta name="author" content="Hennry Cai">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            html, body {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+            }
+
+            #container {
+                max-height: 100%;
+                max-width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 50px 1fr 1fr 1fr .5fr .25fr;
+            }
+
+            #navigation {
+                grid-row: 1/2;
+                grid-column: 1/3;
+                position: fixed;
+                display: flex;
+                width: 100%;
+                height: 50px;
+                z-index: 1;
+
+                font-family: AmericanCaptain;
+                font-size: 2em;
+                word-spacing: 10px;
+                background-color: #33c9df;
+            }
+
+            #navigation a {
+                display: flex;
+                flex-grow: 1;
+                align-items: center;
+                justify-content: center;
+                border-bottom: 3px solid #33c9df;
+                transition: all 3s ease 0s;
+                text-decoration: none;
+                color: #ffad42;
+            }
+
+            #navigation a:visited {
+                text-decoration: none;
+            }
+
+            #navigation a:hover {
+                text-decoration: none;
+                color: #c08d4a;
+                background-color: #30abbe;
+                border-bottom: 3px solid #ffad42;
+            }
+
+            #education {
+                grid-row: 2/3;
+                grid-column: 1/3;
+                color: white;
+                background-color:#0439A2;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 14pt;
+                text-align: center;
+                padding-top: 10px;
+                padding-bottom: 30px;
+            }
+
+            #education p{
+                font-size: 20pt;
+                margin-bottom: 10px;
+                font-weight: 600;
+                position: relative;
+            }
+
+            #education h1{
+                text-shadow: 1px 1px 3px black, 0px 0px 25px yellow, 0px 0px 5px rgba(255, 255, 0, 0.699);
+                position:relative;
+            }
+
+            #addedu{
+                color: #0439A2;
+                background-color:rgb(196, 196, 196);
+                border: 3px solid #0439A2;
+                font-weight: 1000;
+                font-size: 20px;
+                border-radius: 20%;
+                padding: 0;
+                transition: all 1s ease 0s;
+
+                position: absolute;
+                right:200px;
+                top:6.5px;
+            }
+
+            #addedu:hover{
+                background-color: white;
+                color: #407df7;
+                border:3px solid #407df7;
+            }
+            
+            #deleteedu{
+                color: #0439A2;
+                background-color:rgb(196, 196, 196);
+                border: 3px solid #0439A2;
+                font-weight: 1000;
+                font-size: 16px;
+                padding: 0;
+                transition: all 1s ease 0s;
+
+                position: absolute;
+                right:200px;
+                top:1.5px;
+            }
+
+            #deleteedu:hover{
+                background-color: white;
+                color: #407df7;
+                border:3px solid #407df7;
+            }
+
+            .logo{
+                height: 100px;
+                width: 300px;
+                transition: all 3s ease 0s;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+
+            .logo:hover{
+                transform: scaleX(-1);opacity: 0.5;
+            }
+
+            #org {
+                grid-row: 3/4;
+                grid-column: 1/3;
+                background-color: #155715;
+                color:white;
+                padding-top: 10px;
+                padding-bottom: 30px;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 95px 1fr ;
+            }
+
+            #org h1{
+                text-shadow: 1px 1px 3px black, 0px 0px 25px #ffa33f, 0px 0px 5px #dd2222 ;
+                grid-row: 1/2;
+                grid-column: 1/4;
+                text-align: center;
+                margin-top: 25.01px;
+                margin-bottom: 25.01px;
+                position: relative;
+            }
+
+            #orggrid{
+                grid-row: 2/3;
+                grid-column: 2/3;
+            }
+
+            #org p{
+                font-size: 24px;
+                font-weight: 600;
+                margin-bottom: 0;
+                position: relative;
+            }
+
+            #addorg{
+                color: #155715;
+                background-color:rgb(196, 196, 196);
+                border: 3px solid #155715;
+                font-weight: 1000;
+                font-size: 20px;
+                border-radius: 20%;
+                padding: 0;
+                transition: all 1s ease 0s;
+
+                position: absolute;
+                right:200px;
+                top:6.5px;
+            }
+
+            #addorg:hover{
+                color: #36af36;
+                background-color: white;
+                border:3px solid #36af36;
+            }
+
+            #deleteorg{
+                color: #155715;
+                background-color:rgb(196, 196, 196);
+                border: 3px solid #155715;
+                font-weight: 1000;
+                font-size: 16px;
+                padding: 0;
+                transition: all 1s ease 0s;
+
+                position: absolute;
+                right: -220px;
+            }
+
+            #deleteorg:hover{
+                color: #36af36;
+                background-color: white;
+                border:3px solid #36af36;
+            }
+
+            #prevwork {
+                grid-row: 4/5;
+                grid-column: 1/3;
+                background-color: #155715;
+                color:white;
+                padding-top: 10px;
+                padding-bottom: 30px;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                border-top:3px dotted yellowgreen;
+
+                display: flex;
+                flex-direction: column;
+            }
+
+            #prevwork h1{
+                text-shadow: 1px 1px 3px black, 0px 0px 25px #ffa33f, 0px 0px 5px #dd2222 ;
+                text-align: center;
+                margin-top: 25.01px;
+                margin-bottom: 25.01px;
+                font-size: 40px;
+                position: relative;
+            }
+
+            #prevwork span{
+                font-size: 16px;
+                margin-left: 250px;
+                margin-right: 250px;
+                text-align: justify;
+                padding-bottom: 10px;
+            }
+
+            #prevwork p{
+                position: relative;
+                height: 50px;
+            }
+
+            #prevwork p a:link {
+                text-decoration: none;
+                color: lightgreen;
+                font-weight: 600;
+                font-size: 30px;
+                margin-left: 250px;
+                margin-right: 250px;
+            }
+
+            #prevwork p a:visited {
+                text-decoration: none;
+                color: lightgreen;
+            }
+
+            #prevwork p a:hover {
+                text-decoration: none;
+                color: greenyellow;
+                box-shadow: 0 5px 50px 5px rgb(31, 31, 31);
+            }
+
+            #deletework{
+                color: #155715;
+                background-color:rgb(196, 196, 196);
+                border: 3px solid #155715;
+                font-weight: 1000;
+                font-size: 16px;
+                padding: 0;
+                transition: all 1s ease 0s;
+
+                position: absolute;
+                right: 200px;
+            }
+
+            #deletework:hover{
+                color: #36af36;
+                background-color: white;
+                border:3px solid #36af36;
+            }
+
+            #addwork{
+                color: #155715;
+                background-color:rgb(196, 196, 196);
+                border: 3px solid #155715;
+                font-weight: 1000;
+                font-size: 20px;
+                border-radius: 20%;
+                padding: 0;
+                transition: all 1s ease 0s;
+
+                position: absolute;
+                right:200px;
+                top:6.5px;
+            }
+
+            #addwork:hover{
+                color: #36af36;
+                background-color: white;
+                border:3px solid #36af36;
+            }
+
+            #about {
+                grid-row: 5/6;
+                grid-column: 1/3;
+                color: white;
+                background-color:#0439A2;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 14pt;
+                text-align: center;
+                padding-top: 10px;
+                padding-bottom: 30px;
+
+                display: flex;
+                flex-direction: column;
+            }
+
+            #about h1{
+                text-shadow: 1px 1px 3px black, 0px 0px 25px yellow, 0px 0px 5px rgba(255, 255, 0, 0.699);
+                text-align: center;
+                margin-top: 25.01px;
+                margin-bottom: 25.01px;
+                font-size: 40px;
+                position: relative;
+            }
+
+            #editabout{
+                color: #0439A2;
+                background-color:rgb(196, 196, 196);
+                border: 3px solid #0439A2;
+                font-weight: 1000;
+                font-size: 16px;
+                padding: 0;
+                transition: all 1s ease 0s;
+
+                position: absolute;
+                right:200px;
+                top:1.5px;
+            }
+
+            #editabout:hover{
+                background-color: white;
+                color: #407df7;
+                border:3px solid #407df7;
+            }
+
+            #about span{
+                font-size: 16px;
+                margin-left: 250px;
+                margin-right: 250px;
+                text-align: justify;
+            }
+
+            #contact {
+                grid-row: 6/7;
+                grid-column: 1/3;
+                padding-top: 10px;
+                padding-bottom: 30px;
+                background-color: #33c9df;
+                color: white;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            }
+
+            #contact h1{
+                text-shadow: 1px 1px 3px black, 0px 0px 25px #ffad42, 0px 0px 5px #c08d4a;
+                font-family: AmericanCaptain;
+                text-align: center;
+                margin-top: 25.01px;
+                margin-bottom: 25.01px;
+                font-size: 40px;
+                position: relative;
+            }
+
+            #editcontact{
+                color: #33c9df;
+                background-color:rgb(196, 196, 196);
+                border: 3px solid #33c9df;
+                font-weight: 1000;
+                font-size: 16px;
+                padding: 0;
+                transition: all 1s ease 0s;
+
+                position: absolute;
+                right:200px;
+                top:1.5px;
+            }
+
+            #editcontact:hover{
+                background-color: white;
+                color: #65c7d6;
+                border:3px solid #65c7d6;
+            }
+
+            #contact span{
+                font-size: 16px;
+                margin-left: 200px;
+                text-align: justify;
+            }
+
+            @font-face {
+                font-family: AmericanCaptain;
+                src: url(AmericanCaptain.otf);
+            }
+
+            #logincon{
+                height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-size: 24px;
+                font-family:Georgia, 'Times New Roman', Times, serif;
+                background-color: #112266;
+                color: #ffffbb;
+            }
+
+            #logincon h1{
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            #loginbutton{
+                font-family:Georgia, 'Times New Roman', Times, serif;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 5px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                height: 30px;
+                width: 100px;
+                color: #112266;
+                background-color: #ffffbb;
+                font-size: 16px;
+                font-weight: 700;
+            }
+
+            #loginbutton:focus{
+                background-color: #b3b382;
+            }
+
+            #emaillog, #pass{
+                width: 100%;
+                padding: 5px;
+                margin-bottom: 5px;
+                border: 3px solid #112266;
+            }
+
+            #emaillog:focus, #pass:focus{
+                background-color:powderblue;
+                border: 3px solid #ffee99;
+            }
+
+            #educon, #orgcon, #workcon, #aboutcon, #contactcon{
+                height: 100%;
+                width: 100%;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-size: 24px;
+                font-family:Cambria, Georgia, Times, 'Times New Roman', serif;
+                background-color: #112266;
+                color: #ffffbb;
+                display: none;
+            }
+
+            #educon h1, #orgcon h1, #workcon h1, #aboutcon h1, #contactcon h1{
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            #addedubutton, #addorgbutton, #addworkbutton, #addaboutbutton, #addcontactbutton{
+                font-family:Cambria, Georgia, 'Times New Roman', Times, serif;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 5px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                height: 30px;
+                width: 100px;
+                color: #112266;
+                background-color: #ffffbb;
+                font-size: 16px;
+                font-weight: 700;
+            }
+
+            #addedubutton:focus, #addorgbutton:focus, #addworkbutton:focus, #addaboutbutton:hover, #addcontactbutton:hover{
+                background-color: #b3b382;
+            }
+
+            #degree, #school, #year_start, #year_end, #pos, #orgname, #year_start_org, #year_end_org, #workname, #link, #description, #aboutme, #link{
+                width: 100%;
+                padding: 5px;
+                margin-bottom: 5px;
+                border: 3px solid #112266;
+            }
+
+            #degree:focus, #school:focus, #year_start:focus, #year_end:focus, #pos:focus, #orgname:focus, #year_start_org:hover, #year_end_org:hover, #workname:hover, #link:hover, #description:hover, #aboutme:hover, #link:hover{
+                background-color:powderblue;
+                border: 3px solid #ffee99;
+            }
+        </style>
+    </head>
+<!-- <body> -->
+    <body onload="document.getElementById('container').style.display='none'">
+        <div id="logincon">
+            <h1>Admin Login</h1>
+            <form id="loginform">
+                <label for="emaillog">Email: </label>
+                <input type="email" id="emaillog" placeholder="Enter a valid email" required/><br>
+                <label for="pass">Password: </label>
+                <input type="password" id="pass" placeholder="Enter your password" required/><br>
+                <button type="button" id="loginbutton" onclick="verify()">LOGIN</button>
+            </form>
+        </div>
+        <div id="container">
+            <nav id="navigation">
+                <a href="#edu">Education History</a>
+                <a href="#orga">Organizations</a>
+                <a href="#work">Previous Works</a>
+                <a href="#ab">About Me</a>
+                <a href="#con">Contact Details</a>
+            </nav>
+
+            <div id="education">
+                <h1>
+                    <a name="edu"></a>
+                    Education History
+                    <button type="button" id="addedu" onclick="addedu()">&nbsp;+&nbsp;</button>
+                </h1>
+                <img class="logo" src="cksc.png" />
+            </div>
+
+            <div id="org">
+                <h1>
+                    <a name="orga"></a>
+                    List of Past and Present Organizations
+                    <button type="button" id="addorg" onclick="addorg()">&nbsp;+&nbsp;</button>
+                </h1>
+                <div id="orggrid"></div>
+            </div>
+
+            <div id="prevwork">
+                <h1>
+                    <a name="work"></a>
+                    Previous Works
+                    <button type="button" id="addwork" onclick="addwork()">&nbsp;+&nbsp;</button>
+                </h1>
+            </div>
+
+            <div id="about">
+                <h1>
+                    <a name="ab"></a>
+                    About Me
+                    <button type="button" id="editabout" onclick="editabout()">&nbsp;Edit&nbsp;</button>
+                </h1>
+            </div>
+
+            <div id="contact">
+                <h1>
+                    <a name="con"></a>
+                    Contact Details
+                    <button type="button" id="editcontact" onclick="editcontact()">&nbsp;Edit&nbsp;</button>
+                </h1>
+            </div>
+        </div>
+        <div id="educon">
+            <h1>Add new education info</h1>
+            <form>
+                <label for="degree">Degree: </label>
+                <input type="text" id="degree" placeholder="Enter degree" required/><br>
+                <label for="school">School: </label>
+                <input type="text" id="school" placeholder="Enter school name" required/><br>
+                <label for="year_start">Year start: </label>
+                <input type="number" id="year_start" placeholder="Enter starting year" required/><br>
+                <label for="year_end">Year end: </label>
+                <input type="number" id="year_end" placeholder="Enter ending year" required/><br>
+                <button type="button" id="addedubutton" onclick="confirmedu()">SUBMIT</button>
+            </form>
+        </div>
+        <div id="orgcon">
+            <h1>Add new organization info</h1>
+            <form>
+                <label for="orgname">Organization Name: </label>
+                <input type="text" id="orgname" placeholder="Enter organization name" required/><br>
+                <label for="pos">Position: </label>
+                <input type="text" id="pos" placeholder="Enter position" required/><br>
+                <label for="year_start">Year start: </label>
+                <input type="number" id="year_start_org" placeholder="Enter starting year" required/><br>
+                <label for="year_end">Year end: </label>
+                <input type="number" id="year_end_org" placeholder="Enter ending year" required/><br>
+                <button type="button" id="addorgbutton" onclick="confirmorg()">SUBMIT</button>
+            </form>
+        </div>
+        <div id="workcon">
+            <h1>Add new previous work/project info</h1>
+            <form>
+                <label for="workname">Work/Project Name: </label>
+                <input type="text" id="workname" placeholder="Enter work name" required/><br>
+                <label for="link">Link: </label>
+                <input type="text" id="link" placeholder="Enter link" required/><br>
+                <label for="description">Description: </label>
+                <input type="text" id="description" placeholder="Enter description" required/><br>
+                <button type="button" id="addworkbutton" onclick="confirmwork()">SUBMIT</button>
+            </form>
+        </div>
+        <div id="aboutcon">
+            <h1>Edit About Me Information</h1>
+            <form>
+                <label for="aboutme">Description: </label>
+                <input type="text" id="aboutme" placeholder="Enter description" required/><br>
+                <button type="button" id="addaboutbutton" onclick="confirmabout()">SUBMIT</button>
+            </form>
+        </div>
+        <div id="contactcon">
+            <h1>Edit Contact Information</h1>
+            <form>
+                <label for="acclink">Github: </label>
+                <input type="text" id="acclink" placeholder="Enter new link" required/><br>
+                <button type="button" id="addcontactbutton" onclick="confirmcontact()">SUBMIT</button>
+            </form>
+        </div>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyCvKKG-eNC4t9QZohuQepdJ6UsaWw0zVCA",
+                authDomain: "ccapdev-resume-b94eb.firebaseapp.com",
+                databaseURL: "https://ccapdev-resume-b94eb.firebaseio.com",
+                projectId: "ccapdev-resume-b94eb",
+                storageBucket: "ccapdev-resume-b94eb.appspot.com",
+                messagingSenderId: "866732324233",
+                appId: "1:866732324233:web:66862e5427db09efa5dd58"
+            };
+            // Initialize Firebase
+            var defaultProject = firebase.initializeApp(firebaseConfig);
+            var db = firebase.firestore();
+        </script>
+        <script src="index.js"></script>
+        <script src="edit.js"></script>
+    </body>
+</html>

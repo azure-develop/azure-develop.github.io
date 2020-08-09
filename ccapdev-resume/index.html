@@ -7,7 +7,9 @@
         <meta name="author" content="Hennry Cai">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
-            body {
+            html, body {
+                height: 100%;
+                width: 100%;
                 margin: 0;
             }
 
@@ -26,6 +28,7 @@
                 display: flex;
                 width: 100%;
                 height: 50px;
+                z-index: 1;
 
                 font-family: AmericanCaptain;
                 font-size: 2em;
@@ -71,10 +74,15 @@
                 font-size: 20pt;
                 margin-bottom: 10px;
                 font-weight: 600;
+                position: relative;
             }
 
             #education h1{
                 text-shadow: 1px 1px 3px black, 0px 0px 25px yellow, 0px 0px 5px rgba(255, 255, 0, 0.699);
+            }
+
+            #deleteedu, #addedu{
+                display: none;
             }
 
             .logo{
@@ -100,42 +108,35 @@
                 padding-top: 10px;
                 padding-bottom: 30px;
                 font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-                font-size: 14pt;
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr 1fr 1fr;
                 grid-template-rows: 95px 1fr ;
             }
 
             #org h1{
                 text-shadow: 1px 1px 3px black, 0px 0px 25px #ffa33f, 0px 0px 5px #dd2222 ;
                 grid-row: 1/2;
-                grid-column: 1/3;
+                grid-column: 1/4;
                 text-align: center;
                 margin-top: 25.01px;
                 margin-bottom: 25.01px;
+                position: relative;
             }
 
-            #org .orgid1{
-                grid-row: 2/3;
-                grid-column: 1/2;
-                text-align: right;
-                padding-right: 10px;
-                border-right: 3px dashed #d38e0f;
-                font-size: 16px;
-            }
-
-            #org .orgid2{
+            #orggrid{
                 grid-row: 2/3;
                 grid-column: 2/3;
-                padding-left: 10px;
-                border-left: 3px dashed #d38e0f;
-                font-size: 16px;
-                padding-top: 40px;
             }
 
-            #org .orgname{
+            #org p{
                 font-size: 24px;
                 font-weight: 600;
+                margin-bottom: 0;
+                position: relative;
+            }
+
+            #deleteorg, #addorg{
+                display: none;
             }
 
             #prevwork {
@@ -158,6 +159,7 @@
                 margin-top: 25.01px;
                 margin-bottom: 25.01px;
                 font-size: 40px;
+                position: relative;
             }
 
             #prevwork span{
@@ -168,21 +170,34 @@
                 padding-bottom: 10px;
             }
 
-            #prevwork span a:link {
+            #prevwork p{
+                position: relative;
+                height: 50px;
+            }
+
+            #prevwork p a:link {
                 text-decoration: none;
-                font-size: 30px;
                 color: lightgreen;
                 font-weight: 600;
+                font-size: 30px;
+                margin-left: 250px;
+                margin-right: 250px;
+                position: relative;
             }
 
-            #prevwork span a:visited {
+            #prevwork p a:visited {
                 text-decoration: none;
                 color: lightgreen;
             }
 
-            #prevwork span a:hover {
+            #prevwork p a:hover {
                 text-decoration: none;
                 color: greenyellow;
+                box-shadow: 0 5px 50px 5px rgb(31, 31, 31);
+            }
+
+            #deletework, #addwork{
+                display: none;
             }
 
             #about {
@@ -238,6 +253,10 @@
                 text-align: justify;
             }
 
+            #editabout, #editcontact{
+                display: none;
+            }
+
             @font-face {
                 font-family: AmericanCaptain;
                 src: url(AmericanCaptain.otf);
@@ -268,6 +287,7 @@
                     <a name="orga"></a>
                     List of Past and Present Organizations
                 </h1>
+                <div id="orggrid"></div>
             </div>
 
             <div id="prevwork">
@@ -313,46 +333,6 @@
             // Initialize Firebase
             var defaultProject = firebase.initializeApp(firebaseConfig);
             var db = firebase.firestore();
-            
-            // db.collection("educations").get().then(function(snapshot){
-            //     snapshot.forEach(function(doc){
-            //         console.log(doc.data());
-            //     })
-            // });
-
-            // var newObject={
-            //     name:"thing",
-            //     position:"yay",
-            //     year_start:2012,
-            //     year_end:2014
-            // }
-            // db.collection("organizations").add(newObject).then(function(doc){
-            //     console.log("Item added on ID"+ doc.id)
-            // })
-            //
-            //db.collection("organizations").doc("").delete().then(function(){
-            //     console.log("Item deleted");
-            // }).catch(function(err){
-            //         console.log("error in deleting item"+ err);
-            // });
-
-            // var email = "courtney.ngo@dlsu.edu.ph";
-            // var password = "abcd1234"
-
-            // firebase.auth().signInWithEmailAndPassword(email, password).then(function(user){
-            //     console.log("user signed in");
-
-            //     var user = firebase.auth().currentUser;
-            //     if(user != null){
-            //         console.log(user.email);
-            //     }
-            // }).catch(function(err){
-            //     if(err.code == "auth/wrong-password"){
-            //         alert("wrong password");
-            //     }else{
-            //         alert(err.message);
-            //     }
-            // });
         </script>
         <script src="index.js"></script>
     </body>

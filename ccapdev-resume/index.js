@@ -1,36 +1,40 @@
 
+var logocount = 0;
 db.collection("educations").orderBy("year_start").get().then(function(snapshot){
-        snapshot.forEach(function(doc){
-            if(doc.data().school === "De La Salle University - Manila"){
-                document.getElementById('education').innerHTML += `<img class="logo" src="dlsu.png" />`;
-                document.getElementById('education').innerHTML += `<p>${doc.data().degree}</p>`;
-                document.getElementById('education').innerHTML += `<span>${doc.data().school}&emsp;</span>`;
-                document.getElementById('education').innerHTML += `<span>${doc.data().year_start}-</span>`;
-                document.getElementById('education').innerHTML += `<span>${doc.data().year_end}</span>`;
-            }else{
-            document.getElementById('education').innerHTML += `<p>${doc.data().degree}</p>`;
+    snapshot.forEach(function(doc){
+        if(doc.data().school === "De La Salle University - Manila" && logocount === 0){
+            document.getElementById('education').innerHTML += `<img class="logo" src="dlsu.png" />`;
+            document.getElementById('education').innerHTML += `<p id="${doc.id}">${doc.data().degree}<button type="button" id="deleteedu" onclick="deleteedu()">&nbsp;Delete&nbsp;</button></p>`;
+            document.getElementById('education').innerHTML += `<span>${doc.data().school}&emsp;</span>`;
+            document.getElementById('education').innerHTML += `<span>${doc.data().year_start}-</span>`;
+            document.getElementById('education').innerHTML += `<span>${doc.data().year_end}</span>`;
+            logocount = 1;
+        }else if(doc.data().school === "De La Salle University - Manila"){
+            document.getElementById('education').innerHTML += `<p id="${doc.id}">${doc.data().degree}<button type="button" id="deleteedu" onclick="deleteedu()">&nbsp;Delete&nbsp;</button></p>`;
+            document.getElementById('education').innerHTML += `<span>${doc.data().school}&emsp;</span>`;
+            document.getElementById('education').innerHTML += `<span>${doc.data().year_start}-</span>`;
+            document.getElementById('education').innerHTML += `<span>${doc.data().year_end}</span>`;
+        }else{
+            document.getElementById('education').innerHTML += `<p id="${doc.id}">${doc.data().degree}<button type="button" id="deleteedu" onclick="deleteedu()">&nbsp;Delete&nbsp;</button></p>`;
             document.getElementById('education').innerHTML += `<span>${doc.data().school}&emsp;</span>`;
             document.getElementById('education').innerHTML += `<span>${doc.data().year_start}-</span>`;
             document.getElementById('education').innerHTML += `<span>${doc.data().year_end}</span><br>`;
-            }
+        }
     })
 });
 
-var orgid = 1;
 db.collection("organizations").orderBy("year_start").get().then(function(snapshot){
     snapshot.forEach(function(doc){
-        document.getElementById('org').innerHTML +=`<span class="orgid${orgid}"><span class="orgname">${doc.data().name}</span><br>
-        ${doc.data().position}&nbsp${doc.data().year_start}-${doc.data().year_end}</span>`;
-        orgid++;
+        document.getElementById('orggrid').innerHTML +=`<p id="${doc.id}">${doc.data().name}<button type="button" id="deleteorg" onclick="deleteorg()">&nbsp;Delete&nbsp;</button></p>
+        <span>${doc.data().position}&nbsp${doc.data().year_start}-${doc.data().year_end}</span>`;
     })
 });
 
-var workid = 1;
+
 db.collection("works").get().then(function(snapshot){
     snapshot.forEach(function(doc){
-        document.getElementById('prevwork').innerHTML +=`<span class="workid${workid}"><a class="workname" href="${doc.data().link}">${doc.data().name}</a><br>
-        ${doc.data().description}</span>`;
-        workid++;
+        document.getElementById('prevwork').innerHTML +=`<p id="${doc.id}"><a class="workname" href="${doc.data().link}">${doc.data().name}</a><button type="button" id="deletework" onclick="deletework()">&nbsp;Delete&nbsp;</button></p>
+        <span>${doc.data().description}</span>`;
     })
 });
 
