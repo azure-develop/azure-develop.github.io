@@ -38,8 +38,8 @@ function confirmedu(){
     var newObject = {
         degree: document.getElementById('degree').value,
         school: document.getElementById('school').value,
-        year_start: document.getElementById('year_start').value,
-        year_end: document.getElementById('year_end').value
+        year_start: parseInt(document.getElementById('year_start').value),
+        year_end: parseInt(document.getElementById('year_end').value)
     };
 
     db.collection("educations").add(newObject).then(function(doc){
@@ -73,8 +73,8 @@ function confirmorg(){
     var newObject = {
         name: document.getElementById('orgname').value,
         position: document.getElementById('pos').value,
-        year_start: document.getElementById('year_start_org').value,
-        year_end: document.getElementById('year_end_org').value
+        year_start: parseInt(document.getElementById('year_start_org').value),
+        year_end: parseInt(document.getElementById('year_end_org').value)
     };
 
     db.collection("organizations").add(newObject).then(function(doc){
